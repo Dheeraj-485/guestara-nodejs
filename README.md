@@ -25,11 +25,11 @@ cd repository-name
 npm install
 
 # Add your `.env` file with these variables
-MONGO_URI=<MongoDB Connection String>
-CLOUD_NAME=<Your Cloudinary Name>
-API_KEY=<Your API Key>
-API_SECRET=<Your API Secret>
-PORT=5000
+MONGO_URI=your MongoDB Connection String
+CLOUD_NAME=Your Cloudinary Name
+API_KEY=Your API Key
+API_SECRET=Your API Secret
+PORT=8080
 
 # Start the server
 npm start
