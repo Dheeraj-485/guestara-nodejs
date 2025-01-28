@@ -33,3 +33,4 @@ PORT=5000
 
 # Start the server
 npm start
+# Api endpoints:
