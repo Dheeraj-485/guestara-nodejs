@@ -7,7 +7,8 @@ const crypto=require("crypto")
 
 //create a new category
 exports.createCategory = async(req,res)=>{
-    const {name,description,taxApplicability,tax,taxType} = req.body
+    const {name,description,taxApplicability,taxType} = req.body
+    let {tax}=req.body;
     let  {image}=req.files;
           
     
@@ -17,17 +18,20 @@ exports.createCategory = async(req,res)=>{
             return res.status(400).json({message:"Name, description, taxApplicability is mandatory"})
         }
 
-        //Image validation checked
-        if(req.files || !/^image\/(jpeg|png|jpg)$/.test(image.mimetype)){
-     return res.status(400).json({message:"Only jpeg,png or jpg images are allowed"})
-        }
-    
+      
+        
+        // Assign a random tax number if not provided
+        if (!tax) {
+         tax = crypto.randomInt(100000000, 999999999).toString(); // Random 9-digit number
+     }
+
+     const allowedFormats=["image/png","image/jpeg","image/jpg","image/webp"];
+     if(!allowedFormats.includes(image.mimetype)) {
+        return res.status(400).json({message:"Invalid image format"})
+     }
+
  try {
     
-           // Assign a random tax number if not provided
-           if (!tax) {
-            tax = crypto.randomInt(100000000, 999999999).toString(); // Random 9-digit number
-        }
         if(req.files){
             const result=await uploadToCloudinary.uploader.upload(req.files.image.tempFilePath,{
                 folder:"menu"

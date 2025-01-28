@@ -24,9 +24,11 @@ exports.createSubCategory=async(req,res)=>{
         }
 
           //Image validation checked
-          if(req.files || !/^image\/(jpeg|png|jpg)$/.test(image.mimetype)){
-            return res.status(400).json({message:"Only jpeg,png or jpg images are allowed"})
-               }
+          
+     const allowedFormats=["image/png","image/jpeg","image/jpg","image/webp"];
+     if(!allowedFormats.includes(image.mimetype)) {
+        return res.status(400).json({message:"Invalid image format"})
+     }
 
        try {
     
@@ -113,7 +115,7 @@ exports.getSubCategoryById=async(req,res)=>{
 }
 
 
-//update sub categories
+//update sub category
 exports.editSubCategory=async(req,res)=>{
     try {
         

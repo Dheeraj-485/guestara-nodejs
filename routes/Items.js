@@ -4,7 +4,7 @@ const { validateCategoryExists, validatesubCategoryExists } = require("../config
 const router=express.Router();
 
 
-router.post('/categories/:categoryId/items',validateCategoryExists,  createItem);
+router.post('/categories/:categoryId/items',validateCategoryExists,createItem);
 router.post('/categories/:categoryId/subcategories/:subCategoryId/items',validateCategoryExists,validatesubCategoryExists, createItem);
 router.get('/getAllItems', getAllItems);
 router.get('/categories/:categoryId/items', validateCategoryExists,getItemsByCategory);

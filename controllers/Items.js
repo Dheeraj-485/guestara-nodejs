@@ -8,25 +8,33 @@ exports.createItem = async (req, res) => {
     try {
         const { categoryId, subCategoryId } = req.params;
         const { name, description, taxApplicability, tax, baseAmount, discount } = req.body;
+        let {image}=req.files;
 
         // Validate category or subcategory existence
         if (categoryId) {
             const category = await Category.findById(categoryId);
             if (!category) {
-                return res.status(404).json({ success: false, message: 'Category not found' });
+                return res.status(404).json({  message: 'Category not found' });
             }
         }
 
         if (subCategoryId) {
             const subcategory = await subCategory.findById(subCategoryId);
             if (!subcategory) {
-                return res.status(404).json({ success: false, message: 'Subcategory not found' });
+                return res.status(404).json({ message: 'Subcategory not found' });
             }
         }
 
-        let image = '';
-        if (req.file) {
-            const result = await uploadToCloudinary.uploader.upload(req.file.path);
+        
+        
+     const allowedFormats=["image/png","image/jpeg","image/jpg","image/webp"];
+     if(!allowedFormats.includes(image.mimetype)) {
+        return res.status(400).json({message:"Invalid image format"})
+     }
+        if (req.files) {
+            const result = await uploadToCloudinary.uploader.upload(req.files.image.tempFilePath,{
+                folder:"menu"
+            });
             image = result.secure_url;
         }
 

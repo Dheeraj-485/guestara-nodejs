@@ -18,8 +18,9 @@ app.use(
     })
 );
 
+const URL=process.env.MONGO_URL || "mongodb://localhost:27017/menu-mngmt"
 const port=process.env.PORT || 8080;
-mongoose.connect(process.env.MONGO_URL,{useNewUrlParser:true,useUnifiedTopology:true}).then(()=>console.log("MongoDB connected")).catch((err)=>console.log("Error connecting to MongoDb",err.message)
+mongoose.connect(URL,{useNewUrlParser:true,useUnifiedTopology:true}).then(()=>console.log("MongoDB connected")).catch((err)=>console.log("Error connecting to MongoDb",err.message)
 )
 
 app.use("/category",categoryRoutes)
