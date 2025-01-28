@@ -125,6 +125,9 @@ exports.getAllItems = async (req, res) => {
 exports.getItemsByCategory = async (req, res) => {
     try {
         const { categoryId } = req.params;
+        if(!categoryId){
+            res.status(404).json({ message:"Category not found"})
+        }
 
         const items = await Item.find({ categoryId });
         res.status(200).json({ message:"Fetched items by using category id", items });
@@ -138,11 +141,18 @@ exports.getItemsByCategory = async (req, res) => {
 
 exports.getItemsBySubcategory = async (req, res) => {
     try {
-        // const { categoryId } = req.params;
-        const { subcategoryId } = req.params;
+        const { categoryId,subCategoryId } = req.params;
+        // const { subcategoryId } = req.params;
 
-
-        const items = await Item.find( {subcategoryId} );
+          if(!categoryId){
+            res.status(404).json({ message:"No category found"})
+          }
+          if(!subCategoryId){
+            res.status(404).json({ message:"No sub category found"})
+          }
+          
+        const items = await Item.find( {categoryId,subCategoryId} ).populate("subCategoryId")
+        
         res.status(200).json({ message:"Fetched items using sub category id", items });
     } catch (error) {
         console.error("Error fetching items using sub category id",error.message)
