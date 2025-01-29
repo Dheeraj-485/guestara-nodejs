@@ -1,0 +1,582 @@
+{
+	"info": {
+		"_postman_id": "cc379df2-0d09-4e4d-bd4d-8fb2a5a87c61",
+		"name": "Guestara-Menu",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33628988"
+	},
+	"item": [
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "\"Main course\"",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "\"Satisfy your hunger with hearty and fulfilling meals\"",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1efdd8ef-f387-47c0-9a60-0af5866aaee2"
+								},
+								{
+									"key": "taxApplicability",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "tax",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "taxType",
+									"value": "inclusive",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/category",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/category",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/category/6798fb99ff1fc8dad511d093",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"category",
+								"6798fb99ff1fc8dad511d093"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1efdbc81-e859-4db0-9b01-a17f79f3616a",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "\"Pizza\"",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/category/6795f85784f151a81b57deb2",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"category",
+								"6795f85784f151a81b57deb2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "subCategory",
+			"item": [
+				{
+					"name": "create sub",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "\"Non veg  Main course\"",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "\"Delicious non-vegetarian main course dishes.\"",
+									"type": "text"
+								},
+								{
+									"key": "taxApplicabilty",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1efdd8ff-fe93-44b0-aa58-3118b2c0b18f"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/categories/6799b06b8c47fc57763320d8/subCategory",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"categories",
+								"6799b06b8c47fc57763320d8",
+								"subCategory"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "\"Fresh vegetables\"",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get allSub",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/subCategories",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"subCategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Sub by Category id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/categories/6798fbcfff1fc8dad511d095/subCategories",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"categories",
+								"6798fbcfff1fc8dad511d095",
+								"subCategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get sub category by sub category id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/categories/6798fbcfff1fc8dad511d095/subCategories/6798fd1d4a2c1cf8b497e1ec",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"categories",
+								"6798fbcfff1fc8dad511d095",
+								"subCategories",
+								"6798fd1d4a2c1cf8b497e1ec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit sub category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "\"Vege\"",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/subCategories/67976645022b33a82980808d",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"subCategories",
+								"67976645022b33a82980808d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "create items under category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "\"ndnc ke r\"",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "\"Ckdjcnkwenk\"",
+									"type": "text"
+								},
+								{
+									"key": "taxApplicability",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "discount",
+									"value": "25",
+									"type": "text"
+								},
+								{
+									"key": "baseAmount",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1efdd90d-dc06-4f60-9c07-3444d8094bda"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/categories/6798fb99ff1fc8dad511d093/items",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"categories",
+								"6798fb99ff1fc8dad511d093",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create items under sub category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "\"2nd Rajma Rice\"",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "\"2nd Rajma rice is favourite main course of indians\"",
+									"type": "text"
+								},
+								{
+									"key": "tax",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "baseAmount",
+									"value": "80",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1efdd905-a6d3-43f0-a85a-2efb63f9f0fd"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/categories/6798fbcfff1fc8dad511d095/subcategories/6798fd7f4a2c1cf8b497e1f0/items",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"categories",
+								"6798fbcfff1fc8dad511d095",
+								"subcategories",
+								"6798fd7f4a2c1cf8b497e1f0",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/getAllItems",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"getAllItems"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get items by category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/categories/6798fb99ff1fc8dad511d093/items",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"categories",
+								"6798fb99ff1fc8dad511d093",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get items by subCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/categories/6798fbcfff1fc8dad511d095/subcategories/6798fd1d4a2c1cf8b497e1ec/items",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"categories",
+								"6798fbcfff1fc8dad511d095",
+								"subcategories",
+								"6798fd1d4a2c1cf8b497e1ec",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get items by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/items/6798fefb4a2c1cf8b497e1f7",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"items",
+								"6798fefb4a2c1cf8b497e1f7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get items by name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "name",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/items?name=rajma",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"items"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "rajma"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "\"Farmhouse Pizza\"",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://guestara-nodejs.onrender.com/items/6798d2603da6df4b53957a68",
+							"protocol": "https",
+							"host": [
+								"guestara-nodejs",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"items",
+								"6798d2603da6df4b53957a68"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
