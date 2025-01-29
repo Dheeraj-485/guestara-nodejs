@@ -62,55 +62,6 @@ exports.createItem = async (req, res) => {
 
 
 
-// exports.createItem = async (req, res) => {
-//     try {
-//         const { categoryId, subCategoryId } = req.params;
-//         const { name, description, taxApplicability, tax, baseAmount, discount } = req.body;
-
-//         // Validate categoryId and subcategoryId existence
-//         const category = await Category.findById(categoryId);
-//         if (!category) {
-//             return res.status(404).json({ success: false, message: 'Category not found' });
-//         }
-
-//         let subCategories;
-//         if (subCategoryId) {
-//             subCategories = await subCategory.findById(subCategoryId);
-//             if (!subCategories) {
-//                 return res.status(404).json({ success: false, message: 'Subcategory not found' });
-//             }
-//         }
-
-//         // Handle file upload
-//         let image = '';
-//         if (req.file) {
-//             const result = await uploadToCloudinary.uploader.upload(req.file.path);
-//             image = result.secure_url;
-//         }
-
-//         const totalAmount = baseAmount - (discount || 0);
-
-//         // Create item with both categoryId and subcategoryId
-//         const newItem = await Item.create({
-//             name,
-//             image,
-//             description,
-//             taxApplicability,
-//             tax,
-//             baseAmount,
-//             discount,
-//             totalAmount,
-//             categoryId,
-//             subCategoryId: subCategories ? subCategories._id : undefined,
-//         });
-
-//         res.status(201).json({ message: "Item created successfully", item: newItem });
-//     } catch (error) {
-//         console.error("Error creating item", error.message);
-//         res.status(500).json({ message: "Error creating item", error: error.message });
-//     }
-// };
-
 
 exports.getAllItems = async (req, res) => {
     try {
@@ -129,7 +80,7 @@ exports.getItemsByCategory = async (req, res) => {
             res.status(404).json({ message:"Category not found"})
         }
 
-        const items = await Item.find({ categoryId });
+        const items = await Item.find({ categoryId }).populate("categoryId")
         res.status(200).json({ message:"Fetched items by using category id", items });
     } catch (error) {
         console.error("Error fetching items by category id",error.message)
@@ -151,7 +102,10 @@ exports.getItemsBySubcategory = async (req, res) => {
             res.status(404).json({ message:"No sub category found"})
           }
           
-        const items = await Item.find( {categoryId,subCategoryId} ).populate("subCategoryId")
+        const items = await Item.find({categoryId,subCategoryId} ).populate("subCategoryId")
+        if (!items || items.length === 0) {
+            return res.status(404).json({ message: "No items found for the given subcategory" });
+        }
         
         res.status(200).json({ message:"Fetched items using sub category id", items });
     } catch (error) {
