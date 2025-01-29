@@ -2,7 +2,8 @@ const mongoose=require("mongoose")
 const categorySchema=new mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required:true,
+        unique:true,
     },
     image:{
         type:String,
@@ -25,7 +26,7 @@ const categorySchema=new mongoose.Schema({
         type:String,
         enum:["inclusive","exclusive"],
         default:"inclusive"
-    },
+    }
 
 })
 const Category = new mongoose.model("Category",categorySchema)

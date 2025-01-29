@@ -24,9 +24,7 @@ const subCategorySchema=new mongoose.Schema({
     tax:{
         type:Number,
     default:0
-    },
-   
-
+    }
 })
 const subCategory = new mongoose.model("subCategory",subCategorySchema)
 

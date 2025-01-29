@@ -19,7 +19,7 @@ exports.createItem = async (req, res) => {
         }
 
         if (subCategoryId) {
-            const subcategory = await subCategory.findById(subCategoryId);
+            const subcategory = await subCategory.findById(subCategoryId).populate("subCategoryId","name");
             if (!subcategory) {
                 return res.status(404).json({ message: 'Subcategory not found' });
             }
@@ -80,7 +80,7 @@ exports.getItemsByCategory = async (req, res) => {
             res.status(404).json({ message:"Category not found"})
         }
 
-        const items = await Item.find({ categoryId }).populate("categoryId")
+        const items = await Item.find({ categoryId }).populate("categoryId","name")
         res.status(200).json({ message:"Fetched items by using category id", items });
     } catch (error) {
         console.error("Error fetching items by category id",error.message)
@@ -102,7 +102,7 @@ exports.getItemsBySubcategory = async (req, res) => {
             res.status(404).json({ message:"No sub category found"})
           }
           
-        const items = await Item.find({categoryId,subCategoryId} ).populate("subCategoryId")
+        const items = await Item.find({categoryId,subCategoryId} ).populate("subCategoryId","name")
         if (!items || items.length === 0) {
             return res.status(404).json({ message: "No items found for the given subcategory" });
         }

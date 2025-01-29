@@ -8,7 +8,7 @@ const crypto=require("crypto")
 //create a new category
 exports.createCategory = async(req,res)=>{
     const {name,description,taxApplicability,taxType} = req.body
-    let {tax}=req.body;
+    let {tax}=req.body
     let  {image}=req.files;
           
     
@@ -18,7 +18,13 @@ exports.createCategory = async(req,res)=>{
             return res.status(400).json({message:"Name, description, taxApplicability is mandatory"})
         }
 
-      
+        
+        //Image validation checked
+    //     if(req.files || !/^image\/(jpeg|png|jpg)$/.test(image.mimetype)){
+    //  return res.status(400).json({message:"Only jpeg,png or jpg images are allowed"})
+    //     }
+    
+        // console.log(req.files);
         
         // Assign a random tax number if not provided
         if (!tax) {

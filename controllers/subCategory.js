@@ -86,7 +86,7 @@ if(!category){
     res.status(404).json({message:"Category not found"})
 }
 
-const subCategories=await subCategory.find({categoryId});
+const subCategories=await subCategory.find({categoryId}).populate("categoryId","name");
 res.status(200).json({message:"Sub categories found by categoryId",subCategories:subCategories})
 
     } catch (error) {
