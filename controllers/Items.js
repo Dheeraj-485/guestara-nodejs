@@ -19,7 +19,7 @@ exports.createItem = async (req, res) => {
         }
 
         if (subCategoryId) {
-            const subcategory = await subCategory.findById(subCategoryId).populate("subCategoryId","name");
+            const subcategory = await subCategory.findById(subCategoryId);
             if (!subcategory) {
                 return res.status(404).json({ message: 'Subcategory not found' });
             }
